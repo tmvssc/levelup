@@ -14,6 +14,13 @@ public class Producto {
     private String nombre;
     private int precio;
     private String categoria;
+    private String img;
+    public String getImg() {
+        return img;
+    }
+    public void setImg(String img) {
+        this.img = img;
+    }
     public int getId() {
         return id;
     }

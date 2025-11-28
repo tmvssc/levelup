@@ -12,7 +12,7 @@ import lombok.RequiredArgsConstructor;
 @Service
 @RequiredArgsConstructor
 public class ProductoService {
-    private ProductoRepository productoRepository;
+    private final ProductoRepository productoRepository;
 
     public List<Producto>getAll(){
         return productoRepository.findAll();
