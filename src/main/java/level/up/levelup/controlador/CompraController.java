@@ -3,6 +3,7 @@ package level.up.levelup.controlador;
 import java.util.List;
 
 import org.springframework.http.ResponseEntity;
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.DeleteMapping;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
@@ -16,6 +17,7 @@ import level.up.levelup.servicio.CompraService;
 import lombok.RequiredArgsConstructor;
 
 @RestController
+@CrossOrigin(origins = "http://localhost:3000")
 @RequestMapping("/compra")
 @RequiredArgsConstructor
 public class CompraController {

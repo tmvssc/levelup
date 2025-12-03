@@ -5,6 +5,7 @@ import java.util.List;
 
 import org.springframework.stereotype.Service;
 
+import level.up.levelup.entidades.LoginResponseDTO;
 import level.up.levelup.entidades.Usuario;
 import level.up.levelup.repositorio.UsuarioRepository;
 import lombok.RequiredArgsConstructor;
@@ -27,6 +28,22 @@ public class UsuarioService {
     public void deleteUserById(int id){
         usuarioRepository.deleteById(id);
     }
+    public Usuario getUsuarioByEmail(String email){
+        return usuarioRepository.findByEmail(email).orElse(null);
+    }
+    public LoginResponseDTO login(String email, String contraseña) 
+    {
+        Usuario usuario = usuarioRepository.findByEmail(email).orElse(null);
+
+        if (usuario != null && usuario.getContraseña().equals(contraseña)) 
+        {
+            LoginResponseDTO response = new LoginResponseDTO();
+            response.setEmail(usuario.getEmail());
+            response.setEsAdmin("ADMIN".equals(usuario.getRol()));
+            return response;
+        }
+        return null;
+    } 
 
 
 

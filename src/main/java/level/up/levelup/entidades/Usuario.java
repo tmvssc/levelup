@@ -12,7 +12,14 @@ public class Usuario {
     private int id;
     private String email;
     private String contraseña;
+    private String rol;
     
+    public String getRol() {
+        return rol;
+    }
+    public void setRol(String rol) {
+        this.rol = rol;
+    }
     public int getId() {
         return id;
     }

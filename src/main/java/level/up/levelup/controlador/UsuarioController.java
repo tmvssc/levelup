@@ -11,6 +11,7 @@ import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RestController;
 
+import level.up.levelup.entidades.LoginResponseDTO;
 import level.up.levelup.entidades.Usuario;
 import level.up.levelup.servicio.UsuarioService;
 import lombok.RequiredArgsConstructor;
@@ -52,8 +53,15 @@ public class UsuarioController {
         Usuario nuevoUsuario=usuarioService.save(usuario);
         return ResponseEntity.ok(nuevoUsuario);
     }
+    @PostMapping("/login")
+    public ResponseEntity<LoginResponseDTO> login(@RequestBody Usuario usuario) {
+        LoginResponseDTO response = usuarioService.login(usuario.getEmail(), usuario.getContraseña());
+        if (response == null) {
+            return ResponseEntity.noContent().build();
+        }
+        return ResponseEntity.ok(response);
+    }
 
-    
 
 
 }
